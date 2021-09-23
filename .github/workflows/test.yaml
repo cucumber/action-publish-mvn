@@ -1,0 +1,32 @@
+name: Test
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test-publish-mvn:
+    name: It publishes Maven artefacts
+    runs-on: ubuntu-latest
+    environment: Publish to Nexus
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+      - name: Set unique package version
+        id: set-version
+        run: |
+          version=0.0.$GITHUB_RUN_NUMBER
+          mvn versions:set -DnewVersion=$version -DgenerateBackupPoms=false
+          echo "::set-output name=version::$version"
+        working-directory: "java"
+      - name: Test the action
+        uses: ./
+        with:
+          gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
+          gpg-passphrase: ${{ secrets.GPG_PASSPHRASE }}
+          nexus-username: ${{ secrets.NEXUS_USERNAME }}
+          nexus-password: ${{ secrets.NEXUS_PASSWORD }}
+          working-directory: "java"
