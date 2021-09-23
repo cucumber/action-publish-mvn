@@ -46,7 +46,9 @@ runs:
       shell: bash
     - name: publish artefacts
       run: |
+        echo "PWD:$(pwd)"
         dir=$(dirname $(realpath ${{ github.action_path }}))
+        echo "DIR:$dir"
         mvn ${{ inputs.goals }} \
           --batch-mode \
           --settings $dir/settings.xml \
