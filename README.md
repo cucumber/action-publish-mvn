@@ -12,6 +12,9 @@ Needs Java to be installed first.
 * `gpg-passphrase`
 * `nexus-username`
 * `nexus-password`
+* `server-id` (default: `ossrh`)
+* `maven-goals` (default: `clean deploy`)
+* `maven-profiles` (default: `sign-source-javadoc`)
 * `working-directory` (default `.`)
 
 ## Example

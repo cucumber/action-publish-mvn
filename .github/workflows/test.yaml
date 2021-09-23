@@ -12,9 +12,9 @@ jobs:
     environment: Publish to Nexus
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-java@v1
         with:
-          node-version: '16'
+          java-version: '11'
       - name: Set unique package version
         id: set-version
         run: |
@@ -29,4 +29,4 @@ jobs:
           gpg-passphrase: ${{ secrets.GPG_PASSPHRASE }}
           nexus-username: ${{ secrets.NEXUS_USERNAME }}
           nexus-password: ${{ secrets.NEXUS_PASSWORD }}
-          working-directory: "java"
+          working-directory: java
