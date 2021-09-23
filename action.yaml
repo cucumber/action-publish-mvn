@@ -49,9 +49,10 @@ runs:
         echo "PWD:$(pwd)"
         dir=$(dirname $(realpath ${{ github.action_path }}))
         echo "DIR:$dir"
+        echo "AP:${{ github.action_path }}"
         mvn ${{ inputs.goals }} \
           --batch-mode \
-          --settings $dir/settings.xml \
+          --settings ${{ github.action_path }}/settings.xml \
           --activate-profiles ${{ inputs.maven-profiles }} \
           -DskipTests=true
       shell: bash
