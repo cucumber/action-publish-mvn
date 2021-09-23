@@ -15,6 +15,7 @@ jobs:
       - uses: actions/setup-java@v1
         with:
           java-version: '11'
+          cache: 'maven'
       - name: Set unique package version
         id: set-version
         run: |
