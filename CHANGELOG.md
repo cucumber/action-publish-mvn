@@ -10,5 +10,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Publish to Maven Central from a given `working-directory`
 
-[Unreleased]: https://github.com/cucumber-actions/publish-npm/compare/v1.0.0...HEAD
-[v1.0.0]: https://github.com/cucumber-actions/publish-npm/compare/v0.0.0...v1.0.0
+[Unreleased]: https://github.com/cucumber/action-publish-mvn/compare/bf3cb949b4edecc2b72d4476dcd984bc16ba4fbd...HEAD
