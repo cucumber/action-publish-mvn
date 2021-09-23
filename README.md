@@ -1,4 +1,4 @@
-[![Test](https://github.com/cucumber-actions/publish-mvn/actions/workflows/test.yaml/badge.svg)](https://github.com/cucumber-actions/publish-mvn/actions/workflows/test.yaml)
+[![Test](https://github.com/cucumber/action-publish-mvn/actions/workflows/test.yaml/badge.svg)](https://github.com/cucumber/action-publish-mvn/actions/workflows/test.yaml)
 
 # action-publish-mvn
 
