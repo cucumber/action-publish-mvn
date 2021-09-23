@@ -13,10 +13,18 @@ inputs:
   nexus-password:
     description: Password for your Nexus account
     required: true
-  goals:
+  server-id:
+    description: Nexus server id
+    required: false
+    default: ossrh
+  maven-goals:
     description: Maven goals to run
     required: false
     default: clean deploy
+  maven-profiles:
+    description: Maven profiles
+    required: false
+    default: sign-source-javadoc
   working-directory:
     description: "Path within the repo to the folder where the pom.xml file lives"
     required: false
@@ -29,13 +37,27 @@ runs:
       run: |
         echo -e "${{ inputs.gpg-private-key }}" | gpg --batch --import --no-tty
         echo "hello world" > temp.txt
-        gpg --detach-sig --yes -v --output=/dev/null --pinentry-mode loopback --passphrase "${{ inputs.gpg-passphrase }}" temp.txt
+        gpg --detach-sig \
+          --yes -v \
+          --output=/dev/null \
+          --pinentry-mode loopback \
+          --passphrase "${{ inputs.gpg-passphrase }}" temp.txt
         rm temp.txt
       shell: bash
     - name: publish artefacts
       run: |
-        mvn ${{ inputs.goals }} --batch-mode --activate-profiles sign-source-javadoc -DskipTests=true
+        dir=$(dirname $(realpath ${{ github.action_path }}))
+        mvn ${{ inputs.goals }} \
+          --batch-mode \
+          --settings $dir/settings.xml \
+          --activate-profiles ${{ inputs.maven-profiles }} \
+          -DskipTests=true
       shell: bash
+      env:
+        INPUT_SERVER_ID: ${{ inputs.server-id }}
+        INPUT_NEXUS_USERNAME: ${{ inputs.nexus-username }}
+        INPUT_NEXUS_PASSWORD: ${{ inputs.nexus-password }}
+        INPUT_GPG_PASSPHRASE: ${{ inputs.gpg-passphrase }}
       working-directory: ${{ inputs.working-directory }}
 
 branding:
