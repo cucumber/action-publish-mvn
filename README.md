@@ -35,7 +35,7 @@ jobs:
         with:
           java-version: '11'
       - name: Test the action
-        uses: cucumber-actions/publish-mvn@v1.0.0
+        uses: cucumber/action-publish-mvn@v1.0.0
         with:
           gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
           gpg-passphrase: ${{ secrets.GPG_PASSPHRASE }}
