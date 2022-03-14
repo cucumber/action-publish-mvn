@@ -1,5 +1,5 @@
-name: 'Publish to NPM'
-description: 'Publish an npm package from a package.json'
+name: "Publish to NPM"
+description: "Publish an npm package from a package.json"
 inputs:
   gpg-private-key:
     description: GPG private key for signing the published artifacts
@@ -51,6 +51,8 @@ runs:
           --settings ${{ github.action_path }}/settings.xml \
           --activate-profiles ${{ inputs.maven-profiles }} \
           -DskipTests=true
+          -DskipITs=true
+          -Darchetype.test.skip=true
       shell: bash
       env:
         INPUT_SERVER_ID: ${{ inputs.server-id }}

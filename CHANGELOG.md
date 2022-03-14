@@ -6,9 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Changed
+- Skip integration tests ([#3](https://github.com/cucumber/action-publish-mvn/pull/3)
 
 ## [v1.0.0]
-
 ### Added
 - Publish to Maven Central from a given `working-directory`
 
