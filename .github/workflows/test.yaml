@@ -37,7 +37,8 @@ jobs:
           url=https://oss.sonatype.org/service/local/repositories/releases/content/io/cucumber/test-release-automation/$version/
           echo "Checking $url"
           # use an eventually loop to give the sonatype servers time to update
-          until [ $? -eq 0 ]
+          until [ $? = 0 ]
           do
             curl --verbose --fail $url
+            [ $? = 0 ] && print "✅" || print "🛑"
           done
