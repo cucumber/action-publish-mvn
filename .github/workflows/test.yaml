@@ -35,9 +35,4 @@ jobs:
         run: |
           version=0.0.$GITHUB_RUN_NUMBER
           url=https://oss.sonatype.org/service/local/repositories/releases/content/io/cucumber/test-release-automation/$version/
-          echo "Checking $url"
-          # use an eventually loop to give the sonatype servers time to update
-          until curl --verbose --fail $url
-          do
-            [ $? = 0 ] && echo "✅" || echo "🛑"
-          done
+          curl --verbose --fail $url
