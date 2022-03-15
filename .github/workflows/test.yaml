@@ -34,8 +34,10 @@ jobs:
         timeout-minutes: 1
         run: |
           version=0.0.$GITHUB_RUN_NUMBER
+          url=https://oss.sonatype.org/service/local/repositories/releases/content/io/cucumber/cucumber-parent/$version/
+          echo "Checking $url"
           # use an eventually loop to give the sonatype servers time to update
           until [ $? -eq 0 ]
           do
-            curl --fail https://oss.sonatype.org/service/local/repositories/releases/content/io/cucumber/cucumber-parent/$version/
+            curl --fail $url
           done
