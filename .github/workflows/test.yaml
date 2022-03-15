@@ -35,7 +35,7 @@ jobs:
         run: |
           version=0.0.$GITHUB_RUN_NUMBER
           # use an eventually loop to give the sonatype servers time to update
-          until curl --fail https://oss.sonatype.org/service/local/repositories/releases/content/io/cucumber/cucumber-parent/$version/
+          until [ $? -eq 0 ]
           do
-            echo "Trying again..."
+            curl --fail https://oss.sonatype.org/service/local/repositories/releases/content/io/cucumber/cucumber-parent/$version/
           done
