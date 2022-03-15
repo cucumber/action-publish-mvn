@@ -33,6 +33,6 @@ jobs:
       - name: Assert that latest published package version is as expected
         timeout-minutes: 1
         run: |
-          version=0.0.$GITHUB_RUN_NUMBER
+          version=0.0.999
           url=https://oss.sonatype.org/service/local/repositories/releases/content/io/cucumber/test-release-automation/$version/
           curl --verbose --fail $url
