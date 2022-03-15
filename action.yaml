@@ -50,8 +50,8 @@ runs:
           --batch-mode \
           --settings ${{ github.action_path }}/settings.xml \
           --activate-profiles ${{ inputs.maven-profiles }} \
-          -DskipTests=true
-          -DskipITs=true
+          -DskipTests=true \
+          -DskipITs=true \
           -Darchetype.test.skip=true
       shell: bash
       env:
