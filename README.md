@@ -13,7 +13,7 @@ Needs Java to be installed first.
 * `nexus-username`
 * `nexus-password`
 * `server-id` (default: `ossrh`)
-* `maven-goals` (default: `clean deploy`)
+* `maven-goals` (default: `deploy`)
 * `maven-profiles` (default: `sign-source-javadoc`)
 * `working-directory` (default `.`)
 

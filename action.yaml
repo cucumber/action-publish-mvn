@@ -20,7 +20,7 @@ inputs:
   maven-goals:
     description: Maven goals to run
     required: false
-    default: clean deploy
+    default: deploy
   maven-profiles:
     description: Maven profiles
     required: false
