@@ -1,5 +1,5 @@
-name: "Publish to NPM"
-description: "Publish an npm package from a package.json"
+name: "Publish to Maven Central"
+description: "Publish an Maven module from a pom.xml"
 inputs:
   gpg-private-key:
     description: GPG private key for signing the published artifacts
