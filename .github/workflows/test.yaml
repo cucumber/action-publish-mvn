@@ -29,8 +29,8 @@ jobs:
         with:
           gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
           gpg-passphrase: ${{ secrets.GPG_PASSPHRASE }}
-          nexus-username: ${{ secrets.NEXUS_USERNAME }}
-          nexus-password: ${{ secrets.NEXUS_PASSWORD }}
+          nexus-username: ${{ secrets.SONATYPE_PASSWORD }}
+          nexus-password: ${{ secrets.SONATYPE_PASSWORD }}
           working-directory: java
       - name: Assert that latest published package version is as expected
         timeout-minutes: 1
