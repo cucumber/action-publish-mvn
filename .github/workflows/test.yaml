@@ -1,10 +1,14 @@
 name: Test
 
 on:
+  workflow_call:
+  pull_request:
+    branches:
+      - main
   push:
     branches:
       - main
-      - renovate/*
+      - renovate/**
 
 jobs:
   test-publish-mvn:
@@ -23,7 +27,7 @@ jobs:
           version=0.0.$GITHUB_RUN_NUMBER
           mvn versions:set -DnewVersion=$version -DgenerateBackupPoms=false
           echo "::set-output name=version::$version"
-        working-directory: "java"
+        working-directory: "test"
       - name: Test the action
         uses: ./
         with:
@@ -31,7 +35,7 @@ jobs:
           gpg-passphrase: ${{ secrets.GPG_PASSPHRASE }}
           nexus-username: ${{ secrets.SONATYPE_USERNAME }}
           nexus-password: ${{ secrets.SONATYPE_PASSWORD }}
-          working-directory: java
+          working-directory: "test"
       - name: Assert that latest published package version is as expected
         timeout-minutes: 1
         run: |
