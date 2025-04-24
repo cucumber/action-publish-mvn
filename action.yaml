@@ -16,7 +16,7 @@ inputs:
   server-id:
     description: Nexus server id
     required: false
-    default: ossrh
+    default: central
   maven-goals:
     description: Maven goals to run
     required: false
@@ -58,7 +58,7 @@ runs:
         INPUT_SERVER_ID: ${{ inputs.server-id }}
         INPUT_NEXUS_USERNAME: ${{ inputs.nexus-username }}
         INPUT_NEXUS_PASSWORD: ${{ inputs.nexus-password }}
-        INPUT_GPG_PASSPHRASE: ${{ inputs.gpg-passphrase }}
+        MAVEN_GPG_PASSPHRASE: ${{ inputs.gpg-passphrase }}
       working-directory: ${{ inputs.working-directory }}
 
 branding:
