@@ -40,5 +40,12 @@ jobs:
         timeout-minutes: 1
         run: |
           version=0.0.$GITHUB_RUN_NUMBER
-          url=https://oss.sonatype.org/service/local/repositories/releases/content/io/cucumber/test-release-automation/$version/
-          curl --verbose --fail $url
+          curl --verbose --fail \ 
+            -u ${{ secrets.SONATYPE_USERNAME }}:${{ secrets.SONATYPE_PASSWORD }} \
+            -H 'accept: application/json' \
+            https://central.sonatype.com/api/v1/publisher/published?namespace=io.cucumber&name=test-release-automation&version=$version \
+          | jq '.published == true' \
+          | grep -e '^true$'
+          
+          
+            
