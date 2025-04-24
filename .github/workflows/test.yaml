@@ -38,9 +38,10 @@ jobs:
           working-directory: "test"
       - name: Assert that latest published package version is as expected
         timeout-minutes: 1
+        # Don't use --verbose on curl. It will print the authorization header, base64 encoded so not masked by GitHub.
         run: |
           version=0.0.$GITHUB_RUN_NUMBER
-          curl --verbose --fail \ 
+          curl --fail \ 
             -u ${{ secrets.SONATYPE_USERNAME }}:${{ secrets.SONATYPE_PASSWORD }} \
             -H 'accept: application/json' \
             https://central.sonatype.com/api/v1/publisher/published?namespace=io.cucumber&name=test-release-automation&version=$version \
