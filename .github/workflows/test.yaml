@@ -44,7 +44,7 @@ jobs:
           curl --fail \ 
             -u ${{ secrets.SONATYPE_USERNAME }}:${{ secrets.SONATYPE_PASSWORD }} \
             -H 'accept: application/json' \
-            https://central.sonatype.com/api/v1/publisher/published?namespace=io.cucumber&name=test-release-automation&version=$version \
+            "https://central.sonatype.com/api/v1/publisher/published?namespace=io.cucumber&name=test-release-automation&version=$version" \
           | jq '.published == true' \
           | grep -e '^true$'
           
