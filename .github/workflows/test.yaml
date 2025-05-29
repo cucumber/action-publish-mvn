@@ -42,11 +42,11 @@ jobs:
         run: |
           version="0.0.$GITHUB_RUN_NUMBER"
           url="https://central.sonatype.com/api/v1/publisher/published?namespace=io.cucumber&name=test-release-automation&version=$version"
-          echo "Uploading to $url"
+          echo "Checking publishing $url"
           curl --fail \ 
-            -u ${{ secrets.SONATYPE_USERNAME }}:${{ secrets.SONATYPE_PASSWORD }} \
+            -u "${{ secrets.SONATYPE_USERNAME }}:${{ secrets.SONATYPE_PASSWORD }}" \
             -H 'accept: application/json' \
-            "https://central.sonatype.com/api/v1/publisher/published?namespace=io.cucumber&name=test-release-automation&version=$version" \
+            "$url" \
           | jq '.published == true' \
           | grep -e '^true$'
           
