@@ -36,7 +36,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-java@v1
         with:
-          java-version: '11'
+          java-version: '17'
       - name: Test the action
         uses: cucumber/action-publish-mvn@v1.0.0
         with:
