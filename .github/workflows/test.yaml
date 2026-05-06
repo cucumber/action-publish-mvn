@@ -46,7 +46,7 @@ jobs:
           version="0.0.$GITHUB_RUN_NUMBER"
           url="https://central.sonatype.com/api/v1/publisher/published?namespace=io.cucumber&name=test-release-automation&version=$version"
           echo "Checking publishing $url"
-          curl --fail \ 
+          curl --fail \
             -u "${{ secrets.SONATYPE_USERNAME }}:${{ secrets.SONATYPE_PASSWORD }}" \
             -H 'accept: application/json' \
             "$url" \
