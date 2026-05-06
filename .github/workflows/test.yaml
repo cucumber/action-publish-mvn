@@ -9,6 +9,8 @@ on:
       - main
       - renovate/**
 
+permissions: {}
+
 jobs:
   test-publish-mvn:
     name: It publishes Maven artefacts
