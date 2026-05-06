@@ -35,26 +35,31 @@ runs:
   steps:
     - name: import GPG key
       run: |
-        echo -e "${{ inputs.gpg-private-key }}" | gpg --batch --import --no-tty
+        echo -e "${INPUT_GPG_PRIVATE_KEY}" | gpg --batch --import --no-tty
         echo "hello world" > temp.txt
         gpg --detach-sig \
           --yes -v \
           --output=/dev/null \
           --pinentry-mode loopback \
-          --passphrase "${{ inputs.gpg-passphrase }}" temp.txt
+          --passphrase "${INPUT_GPG_PASSPHRASE}" temp.txt
         rm temp.txt
       shell: bash
+      env:
+        INPUT_GPG_PRIVATE_KEY: ${{ inputs.gpg-private-key }}
+        INPUT_GPG_PASSPHRASE: ${{ inputs.gpg-passphrase }}
     - name: publish artefacts
       run: |
-        mvn ${{ inputs.maven-goals }} \
+        mvn ${INPUT_MAVEN_GOALS} \
           --batch-mode \
           --settings ${{ github.action_path }}/settings.xml \
-          --activate-profiles ${{ inputs.maven-profiles }} \
+          --activate-profiles ${INPUTS_MAVEN_PROFILES} \
           -DskipTests=true \
           -DskipITs=true \
           -Darchetype.test.skip=true
       shell: bash
       env:
+        INPUT_MAVEN_GOALS: ${{ inputs.maven-goals }}
+        INPUTS_MAVEN_PROFILES: ${{ inputs.maven-profiles }}
         INPUT_SERVER_ID: ${{ inputs.server-id }}
         INPUT_NEXUS_USERNAME: ${{ inputs.nexus-username }}
         INPUT_NEXUS_PASSWORD: ${{ inputs.nexus-password }}
