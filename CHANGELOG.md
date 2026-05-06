@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Fixed
+- Fixed template expansion
 
 ## [3.0.0] - 2025-04-24
 ### Changed
@@ -23,8 +25,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Publish to Maven Central from a given `working-directory`
 
-[Unreleased]: https://github.com/cucumber/action-publish-mvn/compare/v1.0.0...HEAD
-[3.0.0]: https://github.com/cucumber/action-publish-mvn/compare/v1.0.0...v3.0.0
-[2.0.0]: https://github.com/cucumber/action-publish-mvn/compare/v1.0.0...v2.0.0
+[Unreleased]: https://github.com/cucumber/action-publish-mvn/compare/v3.0.0...HEAD
+[3.0.0]: https://github.com/cucumber/action-publish-mvn/compare/v2.0.0...v3.0.0
+[2.0.0]: https://github.com/cucumber/action-publish-mvn/compare/v1.1.0...v2.0.0
 [1.1.0]: https://github.com/cucumber/action-publish-mvn/compare/v1.0.0...v1.1.0
-[v1.0.0]: https://github.com/cucumber/action-publish-npm/compare/bf3cb949b4edecc2b72d4476dcd984bc16ba4fbd...v1.0.0
+[v1.0.0]: https://github.com/cucumber/action-publish-mvn/compare/bf3cb949b4edecc2b72d4476dcd984bc16ba4fbd...v1.0.0
