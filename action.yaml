@@ -51,8 +51,8 @@ runs:
       run: |
         mvn ${INPUT_MAVEN_GOALS} \
           --batch-mode \
-          --settings ${{ github.action_path }}/settings.xml \
-          --activate-profiles ${INPUTS_MAVEN_PROFILES} \
+          --settings "${{ github.action_path }}/settings.xml" \
+          --activate-profiles "${INPUTS_MAVEN_PROFILES}" \
           -DskipTests=true \
           -DskipITs=true \
           -Darchetype.test.skip=true
