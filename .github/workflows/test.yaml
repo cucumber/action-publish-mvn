@@ -1,13 +1,8 @@
 name: Test
 
 on:
-  pull_request:
-    branches:
-      - main
-  push:
-    branches:
-      - main
-      - renovate/**
+  # Do not trigger on every change. Maven central has publishing limits.
+  workflow_call:
 
 permissions: {}
 
