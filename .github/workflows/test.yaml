@@ -27,7 +27,7 @@ jobs:
           echo "version=$version" >> $GITHUB_OUTPUT
         working-directory: "test"
       - name: Test the action
-        uses: ./
+        uses: $/
         with:
           gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
           gpg-passphrase: ${{ secrets.GPG_PASSPHRASE }}
